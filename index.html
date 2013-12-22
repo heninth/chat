@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="static/bootstrap.min.css" rel="stylesheet">
+		<link href="static/bootstrap-responsive.css" rel="stylesheet">
+		<script src="static/jquery.min.js"></script>
+		<script src="static/bootstrap.min.js"></script>
+		<script src="chat.js"></script>
+		<style>
+			#input {
+				position: fixed;
+				bottom: 0;
+			}
+			.avt {
+				margin-top: 3px;
+			}
+			.avt img {
+				border-radius: 30px;
+				width: 50px;
+			}
+			.own .avt {
+				text-align: center;
+			}
+			#chatbox .row{
+				margin-left: 0;
+			}
+			#emobox .emo{
+				display: block;
+				width: 60px;
+				height: 60px;
+				float: left;
+				margin: 6px;
+				cursor: pointer;
+			}
+			#main .row .row p {
+				overflow-x: hidden;
+			}
+			
+			@media (max-width: 768px) {
+				.avt img {
+					display: none;
+				}
+				.own .avt {
+					text-align: right;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid hide" id="main" style="margin-top: 20px;">
+			<div class="row-fluid" style="margin-bottom: 50px;margin-left:0;" id="chatbox">				
+			</div>
+			<div class="row-fluid" id="input">
+				<div class="span12 input-prepend input-append">
+					<div class="btn-group dropup">
+						<button class="btn dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+						</button>
+						 <ul class="dropdown-menu">
+							<li><a href="logout.php" ><i class="icon-off"></i> Logout</a></li>
+							<li><a href="#setbox" role="button" data-toggle="modal"><i class="icon-wrench"></i> Setting</a></li>
+						 </ul>
+					</div>
+					<input id="msgbox" class="span10" type="text">
+
+						<a class="btn" href="#emobox" role="button" data-toggle="modal"><i class="icon-heart"></i></a>
+						<a class="btn" id="send" >Send</a>
+
+				</div>
+			</div>
+		</div>
+		
+		<!-- emo modal -->
+		<div id="emobox" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="emoboxLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="emoboxLabel">Emo</h3>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+		</div>
+		
+		<!-- setting -->
+		<div id="setbox" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="setboxLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="setboxLabel">Setting</h3>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="avturl" class="input-block-level" placeholder="Avatar URL">
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" type="submit">Save</button>
+			</div>
+		</div>
+		
+		<!-- login/register-->
+		<div id="loginbox" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+			<form class="form-horizontal" method="post" action="login.php">
+				<div class="modal-header">
+					<h3 id="loginLabel">Login <small>or <a href="#" id="reg">Register</a></small></h3>
+				</div>
+				<div class="modal-body">
+						<input type="text" name="name" class="input-large" placeholder="Username">
+						<input type="password" name="password" class="input-large" placeholder="Password">
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" type="submit">Login</button>
+				</div>
+			</form>
+		</div>
+		<div id="regisbox" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="regLabel" aria-hidden="true">
+			<form class="form-horizontal" method="post" action="register.php">
+				<div class="modal-header">
+					<h3 id="regLabel">Register <small>or <a href="#" id="login">Login</a></small></h3>
+				</div>
+				<div class="modal-body">
+						<input type="text" name="name" class="input-large" placeholder="Username">
+						<input type="password" name="password" class="input-large" placeholder="Password">
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" type="submit">Register</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
